@@ -1,5 +1,30 @@
+import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
+
+// Textures
+const textureLoader = new THREE.TextureLoader()
+const colorTexture = textureLoader.load('/textures/minecraft.png')
+// const alphatexture = textureLoader.load('/textures/door/alpha.jpg')
+// const heighttexture = textureLoader.load('/textures/door/height.jpg')
+// const normaltexture = textureLoader.load('/textures/door/normal.jpg')
+// const ambientOcclusiontexture = textureLoader.load('/textures/door/ambientOcclusion.jpg')
+// const metalnesstexture = textureLoader.load('/textures/door/metalness.jpg')
+// const roughnesstexture = textureLoader.load('/textures/door/roughness.jpg')
+
+// colorTexture.repeat.x = 2
+// colorTexture.repeat.y = 3
+// colorTexture.wrapS = THREE.MirroredRepeatWrapping
+// colorTexture.wrapT = THREE.MirroredRepeatWrapping
+
+// colorTexture.rotation = Math.PI / 4
+// colorTexture.center.x = 0.5
+// colorTexture.center.y = 0.5
+
+// colorTexture.minFilter = THREE.NearestFilter
+colorTexture.magFilter = THREE.NearestFilter
+colorTexture.colorSpace = THREE.SRGBColorSpace
 
 /**
  * Base
@@ -14,7 +39,7 @@ const scene = new THREE.Scene()
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const material = new THREE.MeshBasicMaterial({ map: colorTexture })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
